@@ -1,4 +1,4 @@
-<img src="images/four-audiences.png" width="100%">
+<img src="images/four-audiences.gif" width="100%">
 
 # For the Board
 
@@ -74,7 +74,7 @@ The difference is not tone. It is whether a name, a threshold, and an artifact e
 
 ## The board's first-year oversight roadmap
 
-<img src="images/board-oversight-roadmap.png" width="100%">
+<img src="images/board-oversight-roadmap.gif" width="100%">
 
 The firm has a build roadmap — owner, platform, use cases, scale — and it lives in [Chapter 06](06-getting-started-and-roadmap.md). The board's roadmap is a different instrument. It is not a plan to build anything; it is a **cadence of oversight** — what the board *sets*, and what evidence it *inspects*, quarter by quarter — so governance is a routine on the calendar rather than a scramble after an incident. It is paced deliberately: set the risk appetite first, then inspect the evidence against it.
 

@@ -1,4 +1,4 @@
-<img src="images/value-and-shifts.png" width="100%">
+<img src="images/value-and-shifts.gif" width="100%">
 
 # For the CEO & C-suite
 
@@ -57,7 +57,7 @@ Those three decisions cost nothing and are the difference between a firm that tr
 
 ## The CEO's first-year execution roadmap
 
-<img src="images/ceo-first-year-roadmap.png" width="100%">
+<img src="images/ceo-first-year-roadmap.gif" width="100%">
 
 The three decisions above are day one. This is the year that follows — an **execution sequence**, not an oversight cadence and not the firmwide build plan (that lives in [Chapter 06](06-getting-started-and-roadmap.md)). It is the order in which the accountable owner actually moves: sponsored from the top, owned by one executive who chairs the steering committee that helps them prioritize.
 

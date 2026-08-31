@@ -1,4 +1,4 @@
-<img src="images/four-audiences.png" alt="Recommended reading organized by seat: board, C-suite, leadership, the firm" width="100%">
+<img src="images/four-audiences.gif" alt="Recommended reading organized by seat: board, C-suite, leadership, the firm" width="100%">
 
 # Recommended reading
 
