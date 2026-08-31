@@ -8,7 +8,7 @@ Most AI material aimed at our industry starts with the model and works outward. 
 
 This guide is written for four audiences at once, and each can read its own layer:
 
-<img src="docs/images/four-audiences.gif" alt="One strategy, four audiences: Board, C-suite, Leadership, the Firm" width="100%">
+<img src="docs/images/four-audiences.png" alt="One strategy, four audiences: Board, C-suite, Leadership, the Firm" width="100%">
 
 ---
 
@@ -66,7 +66,7 @@ Read it top to bottom as a leadership team, or jump to your seat.
 
 If there is one technical fact a board and C-suite should carry into every AI decision, it is this:
 
-<img src="docs/images/governance-stack.gif" alt="The governance stack and the gap: models under established model-risk regulation, the agentic-AI gap the firm fills, anchored to NIST AI RMF" width="100%">
+<img src="docs/images/governance-stack.png" alt="The governance stack and the gap: models under established model-risk regulation, the agentic-AI gap the firm fills, anchored to NIST AI RMF" width="100%">
 
 The firm's model-risk framework — long-standing supervisory discipline for model risk, now recently modernized — governs traditional models well. But **generative and agentic AI sit explicitly outside that framework's scope.** Classic model risk management does not cover your agents. That governance layer is yours to build, and it is a leadership decision — not something to discover after an incident. [Chapter 07](docs/07-governance-framework.md) lays it out; the working, code-level version is the companion repo [agents-are-easy-governance-is-hard](https://github.com/steviebuchicago/agents-are-easy-governance-is-hard).
 
