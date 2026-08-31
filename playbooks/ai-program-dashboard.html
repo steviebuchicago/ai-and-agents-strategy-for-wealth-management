@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI &amp; Agents Program — Executive Dashboard (Example)</title>
+<style>
+  :root{
+    --bg:#0A1220; --bg2:#0E1B2E; --panel:#12233A; --stroke:#23405F;
+    --ink:#E8F1F8; --body:#AFC6DA; --muted:#5E7A94; --cyan:#7FD8E8;
+    --crimson:#E4573D; --amber:#E7B24C; --green:#4FBE8B; --gold:#D9A94C;
+    --shadow:0 1px 0 rgba(255,255,255,.03), 0 8px 24px rgba(0,0,0,.28);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(160deg,#0A1220,#0E1B2E 60%,#0C1626);
+    font-family:Helvetica,Arial,sans-serif;color:var(--body);padding:34px 40px 40px;width:1360px}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+  h1{color:var(--ink);font-size:26px;margin:0 0 4px;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:13px}
+  .meta{text-align:right;color:var(--body);font-size:12.5px;line-height:1.7}
+  .meta b{color:var(--ink)}
+  .rag{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:bold;letter-spacing:.4px}
+  .rag.g{background:rgba(79,190,139,.16);color:var(--green);border:1px solid rgba(79,190,139,.4)}
+  .rag.a{background:rgba(231,178,76,.16);color:var(--amber);border:1px solid rgba(231,178,76,.4)}
+  .rag.r{background:rgba(228,87,61,.16);color:var(--crimson);border:1px solid rgba(228,87,61,.4)}
+  .banner{margin:14px 0 20px;padding:8px 14px;border:1px dashed var(--stroke);border-radius:8px;
+    color:var(--muted);font-size:12px;background:rgba(127,216,232,.04)}
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:22px}
+  .kpi{background:var(--panel);border:1px solid var(--stroke);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+  .kpi .n{color:var(--ink);font-size:27px;font-weight:bold;line-height:1}
+  .kpi .n .u{font-size:14px;color:var(--muted);font-weight:normal}
+  .kpi .l{font-size:11.5px;color:var(--muted);margin-top:7px;text-transform:uppercase;letter-spacing:.5px}
+  .kpi .d{font-size:11.5px;margin-top:5px}
+  .up{color:var(--green)} .flat{color:var(--muted)} .warn{color:var(--amber)}
+  .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:20px;margin-bottom:20px}
+  .card{background:var(--panel);border:1px solid var(--stroke);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+  .card h2{color:var(--ink);font-size:15px;margin:0 0 14px;letter-spacing:.3px;font-weight:bold;
+    display:flex;justify-content:space-between;align-items:center}
+  .card h2 .hint{font-size:11px;color:var(--muted);font-weight:normal}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{color:var(--muted);text-align:left;font-weight:normal;font-size:11px;text-transform:uppercase;
+    letter-spacing:.5px;padding:0 8px 9px;border-bottom:1px solid var(--stroke)}
+  td{padding:11px 8px;border-bottom:1px solid rgba(35,64,95,.5);color:var(--body)}
+  td.ws{color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.r{background:var(--crimson)}
+  .bar{height:7px;background:rgba(35,64,95,.7);border-radius:5px;overflow:hidden;min-width:64px}
+  .bar > i{display:block;height:100%;border-radius:5px}
+  .adopt{display:flex;flex-direction:column;gap:13px}
+  .arow{display:grid;grid-template-columns:120px 1fr 42px;align-items:center;gap:10px;font-size:12.5px}
+  .arow .lab{color:var(--body)} .arow .v{color:var(--ink);text-align:right;font-weight:bold}
+  .gates{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+  .gate{background:var(--panel);border:1px solid var(--stroke);border-radius:10px;padding:13px;text-align:center}
+  .gate .t{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .gate .s{font-size:13px;color:var(--ink);font-weight:bold;margin-top:6px}
+  .gate .chk{color:var(--green);font-size:15px}
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4px}
+  .ph{position:relative;padding:0 14px}
+  .ph:not(:last-child){border-right:1px solid var(--stroke)}
+  .ph .q{color:var(--cyan);font-size:12px;font-weight:bold;letter-spacing:.4px;margin-bottom:9px}
+  .ph .m{font-size:11.8px;color:var(--body);margin-bottom:7px;padding-left:14px;position:relative;line-height:1.35}
+  .ph .m::before{content:"";position:absolute;left:0;top:5px;width:6px;height:6px;border-radius:50%;background:var(--muted)}
+  .ph .m.done::before{background:var(--green)} .ph .m.now::before{background:var(--cyan);box-shadow:0 0 0 3px rgba(127,216,232,.18)}
+  .risk td .sev{font-weight:bold}
+  .foot{color:var(--muted);font-size:11px;margin-top:20px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div>
+      <h1>AI &amp; Agents Program — Executive Dashboard</h1>
+      <div class="sub">The one page a CEO and board see each month. Illustrative example — sample data.</div>
+    </div>
+    <div class="meta">
+      <div>Reporting period · <b>Q3, current fiscal year</b></div>
+      <div>Accountable owner · <b>Chief Technology Officer</b></div>
+      <div>Overall status · <span class="rag a">AMBER — on plan, data the watch item</span></div>
+    </div>
+  </div>
+
+  <div class="banner">Example only. Every figure below is illustrative sample data to show the shape of the report — not a benchmark or a promise. Adapt the modules to your firm's use cases, risk appetite, and reporting rhythm.</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">4</div><div class="l">Use cases live</div><div class="d up">▲ 2 this quarter</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">In shadow mode</div><div class="d flat">awaiting go-live gate</div></div>
+    <div class="kpi"><div class="n">61<span class="u">%</span></div><div class="l">Advisor adoption</div><div class="d up">▲ from 38%</div></div>
+    <div class="kpi"><div class="n">72<span class="u">%</span></div><div class="l">Budget consumed</div><div class="d flat">of approved YTD</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">Client-affecting incidents</div><div class="d up">clean since launch</div></div>
+    <div class="kpi"><div class="n">96<span class="u">%</span></div><div class="l">Shadow accuracy</div><div class="d warn">1 type below bar</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Workstream status <span class="hint">RAG · owner · this quarter's milestone</span></h2>
+      <table>
+        <thead><tr><th>Workstream</th><th>Status</th><th>Owner</th><th>Milestone</th><th style="width:110px">Progress</th></tr></thead>
+        <tbody>
+          <tr><td class="ws">Governance &amp; policy</td><td><span class="dot g"></span>Green</td><td>CTO / Compliance</td><td>Both policies adopted</td><td><div class="bar"><i style="width:92%;background:var(--green)"></i></div></td></tr>
+          <tr><td class="ws">Center of Enablement</td><td><span class="dot g"></span>Green</td><td>Enablement lead</td><td>Hub standards published</td><td><div class="bar"><i style="width:80%;background:var(--green)"></i></div></td></tr>
+          <tr><td class="ws">Data foundation</td><td><span class="dot r"></span>Red</td><td>Data product owner</td><td>Client data products v1</td><td><div class="bar"><i style="width:44%;background:var(--crimson)"></i></div></td></tr>
+          <tr><td class="ws">Use cases &amp; delivery</td><td><span class="dot a"></span>Amber</td><td>AI product owners</td><td>2 of 4 to go-live gate</td><td><div class="bar"><i style="width:58%;background:var(--amber)"></i></div></td></tr>
+          <tr><td class="ws">Talent &amp; training</td><td><span class="dot g"></span>Green</td><td>People + Enablement</td><td>All-staff literacy at 74%</td><td><div class="bar"><i style="width:74%;background:var(--green)"></i></div></td></tr>
+          <tr><td class="ws">Agentic governance</td><td><span class="dot a"></span>Amber</td><td>Agent gov. owner</td><td>Gates on every live agent</td><td><div class="bar"><i style="width:66%;background:var(--amber)"></i></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Value &amp; adoption <span class="hint">vs. plan</span></h2>
+      <div class="adopt">
+        <div class="arow"><span class="lab">Advisor adoption</span><div class="bar"><i style="width:61%;background:var(--cyan)"></i></div><span class="v">61%</span></div>
+        <div class="arow"><span class="lab">Ops case automation</span><div class="bar"><i style="width:47%;background:var(--cyan)"></i></div><span class="v">47%</span></div>
+        <div class="arow"><span class="lab">Meeting-prep time saved</span><div class="bar"><i style="width:55%;background:var(--gold)"></i></div><span class="v">~55%</span></div>
+        <div class="arow"><span class="lab">Compliance review coverage</span><div class="bar"><i style="width:100%;background:var(--gold)"></i></div><span class="v">100%</span></div>
+        <div class="arow"><span class="lab">Data completeness</span><div class="bar"><i style="width:52%;background:var(--crimson)"></i></div><span class="v">52%</span></div>
+        <div class="arow"><span class="lab">Time-to-value (new office)</span><div class="bar"><i style="width:40%;background:var(--amber)"></i></div><span class="v">40%</span></div>
+      </div>
+      <h2 style="margin-top:22px">Spend vs. budget <span class="hint">YTD, all workstreams</span></h2>
+      <div class="arow" style="grid-template-columns:120px 1fr 62px"><span class="lab">Consumed</span><div class="bar" style="height:12px"><i style="width:72%;background:linear-gradient(90deg,var(--cyan),var(--gold))"></i></div><span class="v">72%</span></div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:8px">Within approved envelope. Per-agent caps enforced; no runaway spend this period.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <h2>Milestone timeline <span class="hint">program roadmap · ● done ● in&nbsp;progress</span></h2>
+    <div class="timeline">
+      <div class="ph"><div class="q">DAYS 0–90 · Foundations</div>
+        <div class="m done">Named accountable owner</div>
+        <div class="m done">Governance + CoE stood up</div>
+        <div class="m done">Two policies adopted</div>
+        <div class="m done">2 no-regrets use cases picked</div></div>
+      <div class="ph"><div class="q">Q2 · Governed scale</div>
+        <div class="m done">First go-live (one narrow slice)</div>
+        <div class="m done">Program dashboard + scorecards</div>
+        <div class="m now">Shadow-mode rollout underway</div></div>
+      <div class="ph"><div class="q">Q3 · Expand (now)</div>
+        <div class="m now">Federated delivery to 3 domains</div>
+        <div class="m now">Data products v1 (at risk)</div>
+        <div class="m">Incentives tied to adoption</div></div>
+      <div class="ph"><div class="q">Q4+ · AI-first</div>
+        <div class="m">Agentic workflows end to end</div>
+        <div class="m">Scale what works, retire what doesn't</div>
+        <div class="m">Year-end board review</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card risk">
+      <h2>Top risks <span class="hint">owner-managed · reviewed monthly</span></h2>
+      <table>
+        <thead><tr><th>Risk</th><th>Severity</th><th>Trend</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td class="ws">Data readiness lags delivery</td><td><span class="sev" style="color:var(--crimson)">High</span></td><td>→ flat</td><td>Dedicated data-product sprint</td></tr>
+          <tr><td class="ws">Shadow accuracy on one doc type</td><td><span class="sev" style="color:var(--amber)">Med</span></td><td>▼ improving</td><td>Stay in shadow; re-tune</td></tr>
+          <tr><td class="ws">Adoption uneven across offices</td><td><span class="sev" style="color:var(--amber)">Med</span></td><td>▲ rising</td><td>Bridge leaders + incentives</td></tr>
+          <tr><td class="ws">Vendor agent lacks audit log</td><td><span class="sev" style="color:var(--amber)">Med</span></td><td>→ flat</td><td>Hold from go-live until met</td></tr>
+          <tr><td class="ws">Shadow-AI / unsanctioned tools</td><td><span class="sev" style="color:var(--green)">Low</span></td><td>▼ falling</td><td>Policy + approved-tool list</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Governance gates <span class="hint">enforced on every live agent</span></h2>
+      <div class="gates">
+        <div class="gate"><div class="t">Permissions</div><div class="s"><span class="chk">✓</span></div></div>
+        <div class="gate"><div class="t">Budget</div><div class="s"><span class="chk">✓</span></div></div>
+        <div class="gate"><div class="t">Audit</div><div class="s"><span class="chk">✓</span></div></div>
+        <div class="gate"><div class="t">Shadow</div><div class="s"><span class="chk">✓</span></div></div>
+        <div class="gate"><div class="t">Human&nbsp;gate</div><div class="s"><span class="chk">✓</span></div></div>
+      </div>
+      <div style="font-size:12.5px;color:var(--body);margin-top:16px;line-height:1.6">
+        Every agent in production has a <b style="color:var(--ink)">named owner</b>, least-privilege permissions,
+        an enforced spend cap, a full audit log, and a human approval step before any consequential action.
+        New agents run in shadow first. Regulatory anchor: <b style="color:var(--ink)">NIST AI RMF</b>;
+        models under SR&nbsp;11-7 / SR&nbsp;26-2, agents under the firm's own agentic-AI policy.
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Illustrative example dashboard — AI &amp; Agents leadership guide. Sample data for shape only. · One page, monthly, one owner.</div>
+</body>
+</html>
