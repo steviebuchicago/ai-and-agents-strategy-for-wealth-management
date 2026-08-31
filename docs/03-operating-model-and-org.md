@@ -1,4 +1,4 @@
-<img src="images/target-operating-model.gif" width="100%">
+<img src="images/target-operating-model.png" width="100%">
 
 # The operating model & org design
 
@@ -32,7 +32,7 @@ And the whole structure rolls up through the owner to the board's oversight comm
 
 ## The AI Steering Committee — the body that steers a firm-wide lift
 
-<img src="images/governance-spine.gif" alt="The governance spine: board oversight, the AI Steering Committee chaired by the accountable owner, and the delivery hub and spokes" width="100%">
+<img src="images/governance-spine.png" alt="The governance spine: board oversight, the AI Steering Committee chaired by the accountable owner, and the delivery hub and spokes" width="100%">
 
 Implementing AI across a regulated firm is not a project one executive runs alone from a corner office. It touches distribution, investments, operations, risk, compliance, data, security, and HR at the same time, and it competes for budget and people against everything else the firm is doing. A lift that large needs a **standing cross-functional body that steers it** — a place where the whole leadership team sets priorities, allocates resources, and unblocks the work, so AI is governed as one firm-wide program rather than as a dozen disconnected departmental efforts. That body is the **AI Steering Committee**, and standing it up is one of the first structural moves a firm makes.
 

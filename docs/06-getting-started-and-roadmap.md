@@ -1,4 +1,4 @@
-<img src="images/maturity-model.gif" width="100%">
+<img src="images/maturity-model.png" width="100%">
 
 # Getting started & the roadmap
 
@@ -20,7 +20,7 @@ The pattern worth internalizing: **most firms are at stage 1 or 2 and are convin
 
 ## The roadmap
 
-<img src="images/roadmap.gif" width="100%">
+<img src="images/roadmap.png" width="100%">
 
 The sequence below is deliberately front-loaded with governance and ownership, because those are what convert pilots into things that ship. It is not a bet on a distant payoff; the no-regrets use cases return value inside the first quarter.
 

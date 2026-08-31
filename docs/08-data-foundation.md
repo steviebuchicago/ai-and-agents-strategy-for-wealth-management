@@ -1,4 +1,4 @@
-<img src="images/data-foundation.gif" width="100%">
+<img src="images/data-foundation.png" width="100%">
 
 # The data foundation
 

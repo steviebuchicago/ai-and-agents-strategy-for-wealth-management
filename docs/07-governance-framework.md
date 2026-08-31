@@ -1,4 +1,4 @@
-<img src="images/governance-stack.gif" width="100%">
+<img src="images/governance-stack.png" width="100%">
 
 # The governance framework
 

@@ -1,4 +1,4 @@
-<img src="images/governance-stack.gif" alt="The governance stack — models, the agentic-AI gap, and the anchor framework" width="100%">
+<img src="images/governance-stack.png" alt="The governance stack — models, the agentic-AI gap, and the anchor framework" width="100%">
 
 # The policies: AI Acceptable Use & AI Agent Policy
 

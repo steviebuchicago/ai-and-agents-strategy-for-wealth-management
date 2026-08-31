@@ -34,7 +34,7 @@ Each role below: what they own, and what "good" looks like.
 
 ## The personas — whose work changes
 
-<img src="images/personas-before-after.gif" alt="The seven personas from toil to judgment: advisor, portfolio manager, operations, compliance, client service, technologist, executive — before and after" width="100%">
+<img src="images/personas-before-after.png" alt="The seven personas from toil to judgment: advisor, portfolio manager, operations, compliance, client service, technologist, executive — before and after" width="100%">
 
 These are the people the strategy is actually about. In every case the human keeps the decision; the agent does the fetching, drafting, and watching, and raises its hand when unsure.
 
